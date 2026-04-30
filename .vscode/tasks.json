@@ -2,6 +2,64 @@
     "version": "2.0.1",
     "tasks": [
         {
+            "label": "Docker: Build firmware (NERDQAXEPLUS2)",
+            "type": "shell",
+            "command": "./docker/idf-run.sh \"idf.py build\"",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "BOARD": "NERDQAXEPLUS2"
+                }
+            },
+            "problemMatcher": [
+                {
+                    "owner": "cpp",
+                    "fileLocation": ["relative", "${workspaceFolder}"],
+                    "pattern": {
+                        "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                        "file": 1, "line": 2, "column": 3, "severity": 4, "message": 5
+                    }
+                }
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Docker: Set target esp32s3",
+            "type": "shell",
+            "command": "./docker/idf-run.sh \"idf.py set-target esp32s3\"",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "Docker: Full clean",
+            "type": "shell",
+            "command": "./docker/idf-run.sh \"idf.py fullclean\"",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "Docker: menuconfig",
+            "type": "shell",
+            "command": "./docker/idf-shell.sh",
+            "options": { "cwd": "${workspaceFolder}" },
+            "presentation": { "reveal": "always", "panel": "new" },
+            "problemMatcher": []
+        },
+        {
+            "label": "Docker: Build image (esp-idf-builder)",
+            "type": "shell",
+            "command": "./docker/build_docker.sh",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "Web UI: npm install & build",
+            "type": "shell",
+            "command": "./docker/idf-run.sh \"cd /home/builder/project/main/http_server/axe-os && npm ci && npm run build\"",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
             "label": "Build - Build project with Docker",
             "type": "shell",
             "command": "docker run --rm -it -v \"${workspaceFolder}\":/project esp-idf-builder /bin/bash -c 'idf.py build'",

@@ -27,6 +27,7 @@
 #include "history.h"
 #include "http_server.h"
 #include "influx_task.h"
+#include "mqtt_task.h"
 #include "macros.h"
 #include "main.h"
 #include "nvs_config.h"
@@ -306,6 +307,7 @@ extern "C" void app_main(void)
         xTaskCreate(create_jobs_task, "stratum miner", 8192, NULL, 10, NULL);
         xTaskCreate(ASIC_result_task, "asic result", 8192, NULL, 15, NULL);
         xTaskCreate(influx_task, "influx", 8192, NULL, 1, NULL);
+        xTaskCreate(mqtt_task, "mqtt", 8192, NULL, 1, NULL);
         xTaskCreatePSRAM(APIs_FETCHER.taskWrapper, "apis ticker", 8192, (void *) &APIs_FETCHER, 5, NULL);
         xTaskCreatePSRAM(wifi_monitor_task, "wifi monitor", 4096, NULL, 1, NULL);
         xTaskCreate(FACTORY_OTA_UPDATER.taskWrapper, "ota updater", 8192, (void *) &FACTORY_OTA_UPDATER, 1, NULL);

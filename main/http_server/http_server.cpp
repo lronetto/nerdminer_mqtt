@@ -13,6 +13,7 @@
 #include "http_utils.h"
 #include "http_websocket.h"
 #include "handler_influx.h"
+#include "handler_mqtt.h"
 #include "handler_swarm.h"
 #include "handler_system.h"
 #include "handler_ota.h"
@@ -227,6 +228,22 @@ esp_err_t start_rest_server(void * pvParameters)
     httpd_uri_t update_influx_settings_uri = {
         .uri = "/api/influx", .method = HTTP_PATCH, .handler = PATCH_update_influx, .user_ctx = rest_context};
     httpd_register_uri_handler(http_server, &update_influx_settings_uri);
+
+    httpd_uri_t mqtt_info_get_uri = {
+        .uri = "/api/mqtt/info", .method = HTTP_GET, .handler = GET_mqtt_info, .user_ctx = rest_context};
+    httpd_register_uri_handler(http_server, &mqtt_info_get_uri);
+
+    httpd_uri_t update_mqtt_settings_uri = {
+        .uri = "/api/mqtt", .method = HTTP_PATCH, .handler = PATCH_update_mqtt, .user_ctx = rest_context};
+    httpd_register_uri_handler(http_server, &update_mqtt_settings_uri);
+
+    httpd_uri_t mqtt_options_uri = {
+        .uri = "/api/mqtt",
+        .method = HTTP_OPTIONS,
+        .handler = handle_options_request,
+        .user_ctx = NULL,
+    };
+    httpd_register_uri_handler(http_server, &mqtt_options_uri);
 
     httpd_uri_t system_options_uri = {
         .uri = "/api/system",

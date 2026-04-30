@@ -226,6 +226,58 @@ menu "InfluxDB Configuration"
 
 endmenu
 
+menu "MQTT Configuration"
+
+    config MQTT_ENABLE
+        bool "Enable MQTT"
+        default n
+        help
+            Enable or disable MQTT publishing of miner telemetry.
+
+    config MQTT_ENABLE_VALUE
+        int
+        default 1 if MQTT_ENABLE
+        default 0
+
+    config MQTT_URI
+        string "MQTT Broker URI"
+        default "mqtt://192.168.0.10:1883"
+        help
+            URI of the MQTT broker (mqtt://host:port). TLS (mqtts://) is currently not enabled in the build.
+
+    config MQTT_USER
+        string "MQTT Username"
+        default ""
+
+    config MQTT_PASS
+        string "MQTT Password"
+        default ""
+
+    config MQTT_TOPIC_PREFIX
+        string "MQTT Topic Prefix"
+        default "nerdqaxe"
+        help
+            Topic prefix for state/availability topics (e.g. <prefix>/<node>/state).
+
+    config MQTT_INTERVAL
+        int "Publish Interval (s)"
+        range 1 3600
+        default 15
+
+    config MQTT_DISCOVERY
+        bool "Enable Home Assistant Discovery"
+        default y
+        help
+            Publish retained MQTT discovery messages under homeassistant/sensor/...
+            so Home Assistant auto-creates entities.
+
+    config MQTT_DISCOVERY_VALUE
+        int
+        default 1 if MQTT_DISCOVERY
+        default 0
+
+endmenu
+
 menu "Discord Alert Configuration"
 
     # Enable/disable specific Discord alerts

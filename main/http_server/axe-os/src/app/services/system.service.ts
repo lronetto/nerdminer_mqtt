@@ -8,6 +8,7 @@ import { IAlertSettings } from '../models/IAlertSettings';
 import { AsicInfo } from '../models/IAsicInfo';
 import { environment } from '../../environments/environment';
 import { IInfluxDB } from '../models/IInfluxDB';
+import { IMqtt } from '../models/IMqtt';
 import { IUpdateStatus } from '../models/IUpdateStatus';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -222,6 +223,17 @@ export class SystemService {
     let headers = new HttpHeaders();
     if (totp) headers = headers.set('X-TOTP', totp);
     return this.httpClient.patch(`${uri}/api/influx`, update, { headers });
+  }
+
+  // MQTT
+  public getMqttInfo(uri: string = ''): Observable<IMqtt> {
+    return this.httpClient.get(`${uri}/api/mqtt/info`) as Observable<IMqtt>;
+  }
+
+  public updateMqtt(uri: string = '', update: any, totp?: string) {
+    let headers = new HttpHeaders();
+    if (totp) headers = headers.set('X-TOTP', totp);
+    return this.httpClient.patch(`${uri}/api/mqtt`, update, { headers });
   }
 
 

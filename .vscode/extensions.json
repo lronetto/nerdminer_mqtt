@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "espressif.esp-idf-extension",
+    "ms-vscode.cpptools",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "angular.ng-template",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "twxs.cmake",
+    "ms-vscode.cmake-tools"
+  ]
+}

@@ -98,6 +98,41 @@
     "cSpell.words": [
         "ssid"
     ],
+    "files.exclude": {
+        "**/build": true,
+        "**/managed_components": true,
+        "**/dependencies.lock": true,
+        "**/__pycache__": true,
+        "main/http_server/axe-os/dist": true,
+        "main/http_server/axe-os/node_modules": true
+    },
+    "search.exclude": {
+        "**/build": true,
+        "**/managed_components": true,
+        "**/node_modules": true,
+        "main/http_server/axe-os/dist": true
+    },
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c11",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureOnOpen": false,
+    "idf.customExtraVars": {
+        "BOARD": "NERDQAXEPLUS2"
+    },
+    "terminal.integrated.env.linux": {
+        "BOARD": "NERDQAXEPLUS2"
+    },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[scss]": {
+        "editor.tabSize": 2
+    },
     "idf.port": "/dev/cu.usbmodem1434301",
     "C_Cpp.intelliSenseEngine": "Tag Parser",
     "idf.pythonInstallPath": "/usr/bin/python",

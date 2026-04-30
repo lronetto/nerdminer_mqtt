@@ -45,6 +45,14 @@
 #define NVS_CONFIG_INFLUX_ORG "influx_org"
 #define NVS_CONFIG_INFLUX_PREFIX "influx_prefix"
 
+#define NVS_CONFIG_MQTT_ENABLE       "mqtt_enable"
+#define NVS_CONFIG_MQTT_URI          "mqtt_uri"
+#define NVS_CONFIG_MQTT_USER         "mqtt_user"
+#define NVS_CONFIG_MQTT_PASS         "mqtt_pass"
+#define NVS_CONFIG_MQTT_TOPIC_PREFIX "mqtt_prefix"
+#define NVS_CONFIG_MQTT_INTERVAL     "mqtt_interval"
+#define NVS_CONFIG_MQTT_DISCOVERY    "mqtt_discovery"
+
 #define NVS_CONFIG_PID_TARGET_TEMP "pid_temp"
 #define NVS_CONFIG_PID_P "pid_p"
 #define NVS_CONFIG_PID_I "pid_i"
@@ -116,6 +124,10 @@ namespace Config {
     inline char* getInfluxBucket() { return nvs_config_get_string(NVS_CONFIG_INFLUX_BUCKET, CONFIG_INFLUX_BUCKET); }
     inline char* getInfluxOrg() { return nvs_config_get_string(NVS_CONFIG_INFLUX_ORG, CONFIG_INFLUX_ORG); }
     inline char* getInfluxPrefix() { return nvs_config_get_string(NVS_CONFIG_INFLUX_PREFIX, CONFIG_INFLUX_PREFIX); }
+    inline char* getMqttURI()         { return nvs_config_get_string(NVS_CONFIG_MQTT_URI, CONFIG_MQTT_URI); }
+    inline char* getMqttUser()        { return nvs_config_get_string(NVS_CONFIG_MQTT_USER, CONFIG_MQTT_USER); }
+    inline char* getMqttPass()        { return nvs_config_get_string(NVS_CONFIG_MQTT_PASS, CONFIG_MQTT_PASS); }
+    inline char* getMqttTopicPrefix() { return nvs_config_get_string(NVS_CONFIG_MQTT_TOPIC_PREFIX, CONFIG_MQTT_TOPIC_PREFIX); }
     inline char* getSwarmConfig() { return nvs_config_get_string(NVS_CONFIG_SWARM, ""); }
     inline char* getDiscordWebhook() { return nvs_config_get_string(NVS_CONFIG_ALERT_DISCORD_URL, CONFIG_ALERT_DISCORD_URL); }
 
@@ -134,6 +146,10 @@ namespace Config {
     inline void setInfluxBucket(const char* value) { nvs_config_set_string(NVS_CONFIG_INFLUX_BUCKET, value); }
     inline void setInfluxOrg(const char* value) { nvs_config_set_string(NVS_CONFIG_INFLUX_ORG, value); }
     inline void setInfluxPrefix(const char* value) { nvs_config_set_string(NVS_CONFIG_INFLUX_PREFIX, value); }
+    inline void setMqttURI(const char* value)         { nvs_config_set_string(NVS_CONFIG_MQTT_URI, value); }
+    inline void setMqttUser(const char* value)        { nvs_config_set_string(NVS_CONFIG_MQTT_USER, value); }
+    inline void setMqttPass(const char* value)        { nvs_config_set_string(NVS_CONFIG_MQTT_PASS, value); }
+    inline void setMqttTopicPrefix(const char* value) { nvs_config_set_string(NVS_CONFIG_MQTT_TOPIC_PREFIX, value); }
     inline void setSwarmConfig(const char* value) { nvs_config_set_string(NVS_CONFIG_SWARM, value); }
     inline void setDiscordWebhook(const char* value) { nvs_config_set_string(NVS_CONFIG_ALERT_DISCORD_URL, value); }
 
@@ -143,6 +159,7 @@ namespace Config {
     inline uint16_t getFanSpeed() { return nvs_config_get_u16(NVS_CONFIG_FAN_SPEED, CONFIG_FAN_SPEED); }
     inline uint16_t getOverheatTemp() { return nvs_config_get_u16(NVS_CONFIG_OVERHEAT_TEMP, CONFIG_OVERHEAT_TEMP); }
     inline uint16_t getInfluxPort() { return nvs_config_get_u16(NVS_CONFIG_INFLUX_PORT, CONFIG_INFLUX_PORT); }
+    inline uint16_t getMqttPublishInterval() { return nvs_config_get_u16(NVS_CONFIG_MQTT_INTERVAL, CONFIG_MQTT_INTERVAL); }
     inline uint16_t getTempControlMode() { return nvs_config_get_u16(NVS_CONFIG_AUTO_FAN_SPEED, CONFIG_AUTO_FAN_SPEED_VALUE); }
     inline uint16_t getPoolMode() { return nvs_config_get_u16(NVS_CONFIG_POOL_MODE, 0); }
     inline uint16_t getPoolBalance() { return nvs_config_get_u16(NVS_CONFIG_POOL_MODE_BALANCE, 50); }
@@ -156,6 +173,7 @@ namespace Config {
     inline void setFanSpeed(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_FAN_SPEED, value); }
     inline void setOverheatTemp(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_OVERHEAT_TEMP, value); }
     inline void setInfluxPort(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_INFLUX_PORT, value); }
+    inline void setMqttPublishInterval(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_MQTT_INTERVAL, value); }
     inline void setTempControlMode(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_AUTO_FAN_SPEED, value); }
     inline void setPoolMode(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_POOL_MODE, value); }
     inline void setPoolBalance(uint16_t value) { nvs_config_set_u16(NVS_CONFIG_POOL_MODE_BALANCE, value); }
@@ -181,6 +199,8 @@ namespace Config {
     inline bool isSelfTestEnabled() { return nvs_config_get_u16(NVS_CONFIG_SELF_TEST, 0) != 0; }
     inline bool isAutoScreenOffEnabled() { return nvs_config_get_u16(NVS_CONFIG_AUTO_SCREEN_OFF, CONFIG_AUTO_SCREEN_OFF_VALUE) != 0; }
     inline bool isInfluxEnabled() { return nvs_config_get_u16(NVS_CONFIG_INFLUX_ENABLE, CONFIG_INFLUX_ENABLE_VALUE) != 0; }
+    inline bool isMqttEnabled()           { return nvs_config_get_u16(NVS_CONFIG_MQTT_ENABLE,    CONFIG_MQTT_ENABLE_VALUE) != 0; }
+    inline bool isMqttDiscoveryEnabled()  { return nvs_config_get_u16(NVS_CONFIG_MQTT_DISCOVERY, CONFIG_MQTT_DISCOVERY_VALUE) != 0; }
     inline bool isDiscordWatchdogAlertEnabled() { return nvs_config_get_u16(NVS_CONFIG_ALERT_DISCORD_WATCHDOG_ENABLE, CONFIG_ALERT_DISCORD_WATCHDOG_ENABLE_VALUE) != 0; }
     inline bool isDiscordBlockFoundAlertEnabled() { return nvs_config_get_u16(NVS_CONFIG_ALERT_DISCORD_BLOCK_FOUND_ENABLE, CONFIG_ALERT_DISCORD_BLOCK_FOUND_ENABLE_VALUE) != 0; }
     inline bool isDiscordBestDiffAlertEnabled() { return nvs_config_get_u16(NVS_CONFIG_ALERT_DISCORD_BEST_DIFF, CONFIG_ALERT_DISCORD_BEST_DIFF_ENABLE_VALUE) != 0; }
@@ -198,6 +218,8 @@ namespace Config {
     inline void setSelfTest(bool value) { nvs_config_set_u16(NVS_CONFIG_SELF_TEST, value ? 1 : 0); }
     inline void setAutoScreenOff(bool value) { nvs_config_set_u16(NVS_CONFIG_AUTO_SCREEN_OFF, value ? 1 : 0); }
     inline void setInfluxEnabled(bool value) { nvs_config_set_u16(NVS_CONFIG_INFLUX_ENABLE, value ? 1 : 0); }
+    inline void setMqttEnabled(bool value)          { nvs_config_set_u16(NVS_CONFIG_MQTT_ENABLE,    value ? 1 : 0); }
+    inline void setMqttDiscoveryEnabled(bool value) { nvs_config_set_u16(NVS_CONFIG_MQTT_DISCOVERY, value ? 1 : 0); }
     inline void setDiscordWatchdogAlertEnabled(bool value) { nvs_config_set_u16(NVS_CONFIG_ALERT_DISCORD_WATCHDOG_ENABLE, value ? 1 : 0); }
     inline void setDiscordAlertBlockFoundEnabled(bool value) { nvs_config_set_u16(NVS_CONFIG_ALERT_DISCORD_BLOCK_FOUND_ENABLE, value ? 1 : 0); }
     inline void setDiscordAlertBestDiffEnabled(bool value) { nvs_config_set_u16(NVS_CONFIG_ALERT_DISCORD_BEST_DIFF, value ? 1 : 0); }

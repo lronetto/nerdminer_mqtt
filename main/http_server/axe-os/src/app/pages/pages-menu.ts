@@ -23,6 +23,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/influxdb',
   },
   {
+    title: 'MQTT',
+    icon: 'wifi-outline',
+    link: '/pages/mqtt',
+  },
+  {
     title: 'Alerts',
     icon: 'bell-outline',
     link: '/pages/alert',

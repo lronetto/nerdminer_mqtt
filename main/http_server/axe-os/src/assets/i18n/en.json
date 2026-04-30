@@ -30,6 +30,7 @@
     "SYSTEM": "System",
     "SWARM": "Swarm",
     "INFLUXDB": "InfluxDB",
+    "MQTT": "MQTT",
     "ALERTS": "Alerts",
     "SECURITY": "Security"
   },
@@ -254,6 +255,22 @@
     "RESTART_REQUIRED": "You must restart this device after saving for changes to take effect.",
     "SETTINGS_SAVED": "InfluxDB settings saved successfully.",
     "SETTINGS_SAVE_FAILED": "Could not save InfluxDB settings."
+  },
+  "MQTT": {
+    "TITLE": "MQTT Configuration",
+    "ENABLED": "Enabled",
+    "URI": "Broker URI",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "TOPIC_PREFIX": "Topic Prefix",
+    "TOPIC_PREFIX_HINT": "Used as <prefix>/<node>/state and <prefix>/<node>/availability.",
+    "INTERVAL": "Publish Interval (s)",
+    "DISCOVERY": "Home Assistant Discovery",
+    "DISCOVERY_HINT": "Publishes retained discovery messages under homeassistant/sensor/...",
+    "RESTART_TOOLTIP": "Restart the device after saving",
+    "RESTART_REQUIRED": "You must restart this device after saving for changes to take effect.",
+    "SETTINGS_SAVED": "MQTT settings saved successfully.",
+    "SETTINGS_SAVE_FAILED": "Could not save MQTT settings."
   },
   "ALERTS": {
     "TITLE": "Alert Configuration",

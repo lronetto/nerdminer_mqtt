@@ -6,6 +6,7 @@ import { NotFoundComponent } from '../@theme/components';
 import { HomeShellComponent } from './home/home-shell.component';
 import { SettingsComponent } from './settings/settings.component';
 import { InfluxdbComponent } from './influxdb/influxdb.component';
+import { MqttComponent } from './mqtt/mqtt.component';
 import { SystemComponent } from './system/system.component';
 import { SwarmComponent } from './swarm/swarm.component';
 import { AlertComponent } from './alert/alert.component';
@@ -31,6 +32,10 @@ const routes: Routes = [{
     {
       path: 'influxdb',
       component: InfluxdbComponent
+    },
+    {
+      path: 'mqtt',
+      component: MqttComponent
     },
     {
       path: 'system',

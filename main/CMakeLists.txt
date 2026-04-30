@@ -35,6 +35,7 @@ SRCS
     "./http_server/http_utils.cpp"
     "./http_server/http_websocket.cpp"
     "./http_server/handler_influx.cpp"
+    "./http_server/handler_mqtt.cpp"
     "./http_server/handler_alert.cpp"
     "./http_server/handler_swarm.cpp"
     "./http_server/handler_system.cpp"
@@ -55,6 +56,7 @@ SRCS
     "./tasks/create_jobs_task.cpp"
     "./tasks/asic_result_task.cpp"
     "./tasks/influx_task.cpp"
+    "./tasks/mqtt_task.cpp"
     "./tasks/ping_task.cpp"
     "./tasks/power_management_task.cpp"
     "./tasks/hashrate_monitor_task.cpp"
@@ -94,6 +96,7 @@ INCLUDE_DIRS
     "../components/dns_server/include"
     "../components/bm1397/include"
     "../components/influx/include"
+    "../components/mqtt/include"
 
 REQUIRES
     "app_update"
@@ -117,6 +120,7 @@ REQUIRES
     "lvgl"
     "lwip"
     "esp-tls"
+    "mqtt"
 
 )
 

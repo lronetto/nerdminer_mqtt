@@ -13,6 +13,7 @@
 #include "boards/board.h"
 #include "global_state.h"
 #include "influx_task.h"
+#include "mqtt_task.h"
 #include "nvs_config.h"
 #include "serial.h"
 
@@ -208,6 +209,7 @@ void PowerManagementTask::readAndPublishPowerTelemetry()
              pout, m_vrTemp);
 
     influx_task_set_pwr(vin, iin, pin, vout, iout, pout);
+    mqtt_task_set_pwr(vin, iin, pin, vout, iout, pout);
 
     // currently only implemented for boards with TPS536x7
     uint32_t status = 0;
@@ -316,6 +318,7 @@ void PowerManagementTask::task()
             m_board->getFanSpeedCh(i, &m_fanRPM[i]);
         }
         influx_set_fan(m_fanPerc, (float) m_fanRPM[0], m_fanPerc, (float) m_fanRPM[1]);
+        mqtt_task_set_fan(m_fanPerc, (float) m_fanRPM[0], m_fanPerc, (float) m_fanRPM[1]);
 
         // collect temperatures
         // get the max of all asic measuring temp sensors
@@ -346,6 +349,7 @@ void PowerManagementTask::task()
 #endif
 
         influx_task_set_temperature(m_chipTempMax, m_vrTemp);
+        mqtt_task_set_temperature(m_chipTempMax, m_vrTemp);
 
         float vr_maxTemp = asic_overheat_temp;
         if (m_board->getVrMaxTemp()) {

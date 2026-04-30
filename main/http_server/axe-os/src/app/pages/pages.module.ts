@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SettingsModule } from './settings/settings.module';
 import { EditModule } from './edit/edit.module';
 import { InfluxDBModule } from './influxdb/influxdb.module';
+import { MqttModule } from './mqtt/mqtt.module';
 import { SystemModule } from './system/system.module';
 import { SwarmModule } from './swarm/swarm.module';
 import { HomeModule } from './home/home.module';
@@ -29,6 +30,7 @@ import { SecurityModule } from './security/security.module';
     SettingsModule,
     EditModule,
     InfluxDBModule,
+    MqttModule,
     SystemModule,
     SwarmModule,
     AlertModule,
