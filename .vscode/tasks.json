@@ -12,7 +12,7 @@
                 }
             },
             "windows": {
-                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py build\""
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc 'idf.py build'"
             },
             "problemMatcher": [
                 {
@@ -32,7 +32,7 @@
             "command": "./docker/idf-run.sh \"idf.py set-target esp32s3\"",
             "options": { "cwd": "${workspaceFolder}" },
             "windows": {
-                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py set-target esp32s3\""
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc 'idf.py set-target esp32s3'"
             },
             "problemMatcher": []
         },
@@ -42,7 +42,7 @@
             "command": "./docker/idf-run.sh \"idf.py fullclean\"",
             "options": { "cwd": "${workspaceFolder}" },
             "windows": {
-                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py fullclean\""
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc 'idf.py fullclean'"
             },
             "problemMatcher": []
         },
@@ -52,7 +52,7 @@
             "command": "./docker/idf-shell.sh",
             "options": { "cwd": "${workspaceFolder}" },
             "windows": {
-                "command": "docker run --rm -it -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py menuconfig\""
+                "command": "docker run --rm -it -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc 'idf.py menuconfig'"
             },
             "presentation": { "reveal": "always", "panel": "new" },
             "problemMatcher": []
@@ -73,7 +73,7 @@
             "command": "./docker/idf-run.sh \"cd /home/builder/project/main/http_server/axe-os && npm ci && npm run build\"",
             "options": { "cwd": "${workspaceFolder}" },
             "windows": {
-                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -w /home/builder/project/main/http_server/axe-os esp-idf-builder /bin/bash -lc \"npm ci && npm run build\""
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -w /home/builder/project/main/http_server/axe-os esp-idf-builder /bin/bash -lc 'npm ci && npm run build'"
             },
             "problemMatcher": []
         },
