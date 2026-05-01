@@ -11,6 +11,9 @@
                     "BOARD": "NERDQAXEPLUS2"
                 }
             },
+            "windows": {
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py build\""
+            },
             "problemMatcher": [
                 {
                     "owner": "cpp",
@@ -28,6 +31,9 @@
             "type": "shell",
             "command": "./docker/idf-run.sh \"idf.py set-target esp32s3\"",
             "options": { "cwd": "${workspaceFolder}" },
+            "windows": {
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py set-target esp32s3\""
+            },
             "problemMatcher": []
         },
         {
@@ -35,6 +41,9 @@
             "type": "shell",
             "command": "./docker/idf-run.sh \"idf.py fullclean\"",
             "options": { "cwd": "${workspaceFolder}" },
+            "windows": {
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py fullclean\""
+            },
             "problemMatcher": []
         },
         {
@@ -42,6 +51,9 @@
             "type": "shell",
             "command": "./docker/idf-shell.sh",
             "options": { "cwd": "${workspaceFolder}" },
+            "windows": {
+                "command": "docker run --rm -it -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py menuconfig\""
+            },
             "presentation": { "reveal": "always", "panel": "new" },
             "problemMatcher": []
         },
@@ -50,6 +62,9 @@
             "type": "shell",
             "command": "./docker/build_docker.sh",
             "options": { "cwd": "${workspaceFolder}" },
+            "windows": {
+                "command": "docker build -t esp-idf-builder \"${workspaceFolder}/docker\""
+            },
             "problemMatcher": []
         },
         {
@@ -57,12 +72,15 @@
             "type": "shell",
             "command": "./docker/idf-run.sh \"cd /home/builder/project/main/http_server/axe-os && npm ci && npm run build\"",
             "options": { "cwd": "${workspaceFolder}" },
+            "windows": {
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -w /home/builder/project/main/http_server/axe-os esp-idf-builder /bin/bash -lc \"npm ci && npm run build\""
+            },
             "problemMatcher": []
         },
         {
             "label": "Build - Build project with Docker",
             "type": "shell",
-            "command": "docker run --rm -it -v \"${workspaceFolder}\":/project esp-idf-builder /bin/bash -c 'idf.py build'",
+            "command": "docker run --rm -v \"${workspaceFolder}\":/home/builder/project -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc 'idf.py build'",
             "options": {
                 "env": {
                     "PATH": "${env:PATH}"
@@ -73,7 +91,7 @@
                     "owner": "cpp",
                     "fileLocation": [
                         "relative",
-                        "/project"
+                        "${workspaceFolder}"
                     ],
                     "pattern": {
                         "regexp": "^\\.\\.(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
@@ -102,7 +120,7 @@
                 "isDefault": true
             },
             "windows": {
-                "command": "docker run --rm -it -v \"${workspaceFolder}\":/project esp-idf-builder /bin/bash -c 'idf.py build'",
+                "command": "docker run --rm -v \"${workspaceFolder}:/home/builder/project\" -e BOARD=NERDQAXEPLUS2 esp-idf-builder /bin/bash -lc \"idf.py build\"",
                 "options": {
                     "env": {
                         "PATH": "${env:PATH}"
